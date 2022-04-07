@@ -1,0 +1,139 @@
+@mixin on-event($self: false) {
+  @if $self{
+   &,
+   &:active,
+   &:focus,
+   &:hover {
+     @content;
+   }
+ }
+ @else {
+   &:active,
+   &:focus,
+   &:hover {
+     @content;
+   }
+ }
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "xs" { @media screen and (max-width: 575px) { @content; } }
+
+  @else if $breakpoint == "sm-down" { @media screen and (max-width: 767px) { @content; } }
+  @else if $breakpoint == "sm" { @media (min-width: 576px) and (max-width: 767px) { @content; } }
+  @else if $breakpoint == "sm-up" { @media screen and (min-width: 576px) { @content; } }
+
+  @else if $breakpoint == "md-down" { @media screen and (max-width: 991px) { @content; } }
+  @else if $breakpoint == "md" { @media (min-width: 768px) and (max-width: 991px) { @content; } }
+  @else if $breakpoint == "md-up" { @media screen and (min-width: 768px) { @content; } }
+
+  @else if $breakpoint == "lg-down" { @media screen and (max-width: 1199px) { @content; } }
+  @else if $breakpoint == "lg" { @media (min-width: 992px) and (max-width: 1199px) { @content; } }
+  @else if $breakpoint == "lg-up" { @media screen and (min-width: 992px) { @content; } }
+
+  @else if $breakpoint == "xl-down" { @media screen and (max-width: 1399px) { @content; } }
+  @else if $breakpoint == "xl" { @media (min-width: 1200px) and (max-width: 1399px) { @content; } }
+  @else if $breakpoint == "xl-up" { @media screen and (min-width: 1200px) { @content; } }
+
+  @else if $breakpoint == "xxl" { @media screen and (min-width: 1400px) { @content; } }
+}
+
+@mixin transition($properties...) {
+ -webkit-transition: $properties;
+ -moz-transition: $properties;
+ -ms-transition: $properties;
+ -o-transform: $properties;
+ transition: $properties;
+}
+
+@mixin transform($properties...) {
+ -webkit-transform: $properties;
+ -moz-transform: $properties;
+ -ms-transform: $properties;
+ -o-transform: $properties;
+ transform: $properties;
+}
+
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+
+@mixin animation($properties...) {
+ -webkit-animation: $properties;
+ -moz-animation: $properties;
+ -ms-animation: $properties;
+ -o-animation: $properties;
+ animation: $properties;
+}
+
+@mixin boxshadow($properties...) {
+ -webkit-box-shadow: $properties;
+ -moz-box-shadow: $properties;
+ -ms-box-shadow: $properties;
+ -o-box-shadow: $properties;
+ box-shadow: $properties;
+}
+
+@mixin text-shadow($properties...) {
+ -webkit-text-shadow: $properties;
+ -moz-text-shadow: $properties;
+ -ms-text-shadow: $properties;
+ -o-text-shadow: $properties;
+ text-shadow: $properties;
+}
+
+@mixin linear-gradient($direction, $colors...) {
+  @if $direction == 'right' {
+    background: -webkit-linear-gradient(left, $colors);
+    background: -moz-linear-gradient(left, $colors);
+    background: linear-gradient(to $direction, $colors);
+  } @else if $direction == 'left' {
+  background: -webkit-linear-gradient(right, $colors);
+  background: -moz-linear-gradient(right, $colors);
+  background: linear-gradient(to $direction, $colors);
+  } @else {
+    background: -webkit-linear-gradient($direction, $colors);
+    background: linear-gradient($direction, $colors);
+  }
+  background: -o-linear-gradient($direction,$colors);
+}
+
+@mixin radial-gradient($properties...) {
+ background: -webkit-radial-gradient($properties);
+ background: -moz-radial-gradient($properties);
+ background: -o-radial-gradient($properties);
+ background: radial-gradient($properties);
+}
+
+@mixin keyframes($keyframesName) {
+  @-webkit-keyframes #{$keyframesName}{ @content; }
+  @-moz-keyframes #{$keyframesName} { @content; }
+  @keyframes #{$keyframesName} { @content; }
+}
+
+@mixin user-select($property) {
+  -webkit-user-select: $property;
+  -moz-user-select: $property;
+  -ms-user-select: $property;
+  -o-user-select: $property;
+  user-select: $property;
+}
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin placeholder() {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}

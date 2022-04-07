@@ -1,0 +1,19 @@
+.text {
+  &.align {
+    &-center {
+      text-align: center;
+    }
+  }
+
+  &.color {
+    &-red {
+      color: var(--text-color-red);
+    }
+  }
+
+  &.size {
+    &-2 {
+      font-size: 2rem;
+    }
+  }
+}

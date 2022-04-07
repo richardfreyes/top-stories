@@ -1,0 +1,47 @@
+html {
+  font-size: 100%;
+
+  @include respond-to(xl) {
+    font-size: 90%;
+  }
+
+  @include respond-to(lg-down) {
+    font-size: 85%;
+  }
+}
+
+body {
+  margin: 0;
+  color: var(--text-color);
+  font: normal 0.8rem Roboto, "Helvetica Neue", sans-serif;;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @include respond-to(xs) { max-width: 100%; }
+  @include respond-to(sm) { max-width: 540px; }
+  @include respond-to(md) { max-width: 720px; }
+  @include respond-to(lg) { max-width: 960px; }
+  @include respond-to(xl) { max-width: 1140px; }
+  @include respond-to(xxl) { max-width: 1460px; }
+
+  &--fluid {
+    max-width: 100%;
+  }
+}

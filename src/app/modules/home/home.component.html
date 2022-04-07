@@ -1,0 +1,24 @@
+<div class="stories" *ngIf="topStoriesState.isSuccess && storeItemsState.isSuccess && usersState.isSuccess">
+  <div class="container">
+    <h1 class="text align-center">Top Stories</h1>
+    <div class="stories__holder">
+      <div *ngFor="let story of storeItemsData;let i = index;" class="stories__list">
+        <a href="{{story?.url ? story?.url : 'javascript:void(0)'}}" target="{{story?.url ? '_blank' : ''}}" class="stories__url">
+          <img class="stories__img" src="../../../assets/images/dummy-img-{{i}}.jpg" alt="Dummy Image">
+          <h2 *ngIf="story?.title" class="stories__title">{{ story?.title }}</h2>
+          <p>URL: {{ story?.url ? story?.url : 'No URL' }}</p>
+          <p *ngIf="story?.time">Timestamp: {{ story?.time | date: 'long' }}</p>
+          <p *ngIf="story?.score">Score: {{ story?.score }}</p>
+          <p *ngIf="story?.by">Author ID: {{ story?.by }}</p>
+          <p *ngIf="story?.karma">Author Karma Score: {{ story?.karma }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="topStoriesState.isError || storeItemsState.isError || usersState.isError">
+  <div class="container">
+    <p class="text align-center color-red size-2">Error Fetching API</p>
+  </div>
+</div>
